@@ -18,6 +18,9 @@ function validateForm(e) {
     showAlert('Por favor ingrese un término de búsqueda');
     return;
   }
+
+  searchImages(termSearch);
+  document.querySelector('#termino').value = '';
 }
 
 function showAlert(message) {
@@ -43,4 +46,17 @@ function showAlert(message) {
       alert.remove();
     }, TIME_DURATION);
   }
+}
+
+function searchImages(term) {
+  const API_KEY = '45249828-7dacdf86c9383b99a295ffc4f';
+  const URL = `https://pixabay.com/api/?key=${API_KEY}&q=${term}`;
+
+  fetch(URL)
+    .then(response => response.json())
+    .then(data => showImages(data.hits));
+}
+
+function showImages(images) {
+  console.log(images);
 }
