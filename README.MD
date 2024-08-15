@@ -3,6 +3,7 @@
 ## Description
 
 2024-08-01: PROJECT START
+
 2024-08-15: PROJECT END
 
 This project is a learning exercise aimed at creating an efficient and user-friendly system for querying and consuming images from the Pixabay API. It allows users to search, access and download images.
