@@ -77,17 +77,19 @@ function showAlert(message) {
  * @function searchImages
  * @returns {void}
  */
-function searchImages() {
+async function searchImages() {
   const term = document.querySelector('#termino').value.trim();
   const API_KEY = '45249828-7dacdf86c9383b99a295ffc4f';
   const URL = `https://pixabay.com/api/?key=${API_KEY}&q=${term}&per_page=${resultsPerPage}&page=${currentPage}`;
 
-  fetch(URL)
-    .then(response => response.json())
-    .then(data => {
-      totalPages = estimatePages(data.totalHits);
-      showImages(data.hits);
-    });
+  try {
+    const response = await fetch(URL);
+    const data = await response.json();
+    totalPages = estimatePages(data.totalHits);
+    showImages(data.hits);
+  } catch (error) {
+    console.error(error);
+  }
 }
 
 /**
