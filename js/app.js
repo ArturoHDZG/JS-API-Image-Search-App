@@ -88,7 +88,7 @@ async function searchImages() {
     totalPages = estimatePages(data.totalHits);
     showImages(data.hits);
   } catch (error) {
-    console.error(error);
+    showAlert(error);
   }
 }
 
